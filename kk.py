@@ -13,3 +13,21 @@ plt.xlabel('x')
 plt.ylabel('f(x)')#设置x与y轴标签
 plt.legend(loc='upper right')#显示图例
 plt.show()
+n=int(input())
+A=[]
+for i in range(n):
+    xun=list(map(int,input().split()))
+    A.append(xun)#将各行以列表形式存入一个列表中
+style=list(input().split())
+dai=list(map(int,input().split()))
+S=[]
+for i in range(n):
+    S.append(dai)#将待测样本存入n次
+B=np.array(A)
+C=np.array(S)#将列表转化为矩阵
+D=B-C
+D=D**2
+result=D.sum(axis=1)#进行计算，得到一个1*n的结果矩阵
+result1=list(result)
+n=result1.index(min(result1))#将矩阵转化为列表形式取最小值
+print(style[n])
